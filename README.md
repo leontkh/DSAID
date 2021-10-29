@@ -36,3 +36,10 @@ Please find the image in /system_design
 <img src="system_design/DSAID.png"
      alt="System Design for Image Processing"
      style="float: left; margin-right: 10px;" />
+
+## Section: 4
+Please find the associated code and image in /sg_covid_cases
+
+<img src="sg_covid_cases/sg_covid_cases.png"
+     alt="System Design for Image Processing"
+     style="float: left; margin-right: 10px;" />
