@@ -1,1 +1,31 @@
 # DSAID
+## Section: 1
+Please find the output in /output and the corresponding DAG file in /dag
+
+## Section: 2
+The database will be constructed with the tables (and respective column names) as below:
+
+Salespeople
+* salesperson_id [Unique Key]
+* salesperson_name
+
+Cars
+* car_serial_no [Unique Key]
+* manufacturer
+* model_name
+* weight
+* price
+* is_sold
+
+Sales
+* sale_id [Unique Key]
+* date
+* time
+* salesperson_id
+* car_serial_no [Unique]
+* customer_id
+
+Customers
+* customer_id [Unique Key]
+* customer_name
+* customer_phone
