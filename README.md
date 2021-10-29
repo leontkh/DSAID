@@ -29,3 +29,10 @@ Customers
 * customer_id [Unique Key]
 * customer_name
 * customer_phone
+
+## Section: 3
+Please find the image in /system_design
+
+<img src="system_design/DSAID.png"
+     alt="System Design for Image Processing"
+     style="float: left; margin-right: 10px;" />
