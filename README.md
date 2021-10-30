@@ -37,7 +37,7 @@ To initiate the postgres docker container
 The DDL statements are included in the docker-compose
 
 To connect to the postgres container, open a new terminal and use
-> POSTGRES_CID=`docker container ls| grep postgres_db| awk '{ print $1 }'` && docker exec -it $POSTGRES_CID bash
+> POSTGRES_CID=\`docker container ls| grep postgres_db| awk '{ print $1 }'\` && docker exec -it $POSTGRES_CID bash
 
 Then to connect into postgres use
 > psql -d postgres_db -U postgres_user
