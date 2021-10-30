@@ -168,6 +168,6 @@ The folder also includes `cars_processing.ipynb`, outlining how the machine lear
 
 ## Afterword
 
-I would like to have written a way to automate the Airflow set-up process for Section 1. However, my current computer does not possess sufficient memory to run Airflow and I am unable to check the effectiveness of my DAG file.
+I would like to have written a way to automate the Airflow set-up process for Section 1. However, my current computer does not possess sufficient memory to run Airflow in Docker and I am unable to check the effectiveness of my DAG file.
 
 Overall, this Technical Test has been a fun challenge. Typically I would receive algorithm challenges or SQL tests as technical tests, but this is the first time I've seen a test so comprehensive. Along the way I've learnt to utilise the syntax for markdown more, and would definitely use this to make my README.md more readable in future projects.
