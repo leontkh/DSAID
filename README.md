@@ -45,7 +45,7 @@ Please find the associated code and image in /sg_covid_cases
      style="float: left; margin-right: 10px;" />
 
 ## Section: 5
-Please find the associated model pickle file and prediction in /classifier_model
+Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
 
 <img src="classifier_model/prediction.png"
      alt="System Design for Image Processing"
