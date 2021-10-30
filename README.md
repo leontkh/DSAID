@@ -127,13 +127,21 @@ Assumptions made:
 * Scheduled query results are sent to Business Intelligence tools for visualization
 
 ## Section 4: Charts and APIs
-Please find the associated code and image in /sg_covid_cases
+The SG COVID-19 cases graph below can be found at [/sg_covid_cases](https://github.com/leontkh/DSAID/tree/master/sg_covid_cases). The associated Python file is also included in the same folder.
 
 <img src="sg_covid_cases/sg_covid_cases.png"
      alt="Graph of cases over time in Singapore"
      style="float: left; margin-right: 10px;" />
 
-*Text explaining logic behind diagram, especially where data is NA*
+The Python file accesses the API endpoint 3 times, each time calling for a different set of data. These are: 
+
+* the cumulative number of confirmed cases
+* the cumulative number of recovered cases
+* the cumulative number of COVID-19 deaths
+
+before plotting the graph out in the same axis.
+
+The cumulative number of `recovered` cases drop to `0` around August 2021. I suspect that the SG government may have changed their data format, resulting in the endpoint not collecting any data. As a result, I made the decision to change the `0` values to `NaN` values so the the graph cuts off when its no longer relevant.
 
 ## Section 5: Machine Learning
 Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in the folder /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
