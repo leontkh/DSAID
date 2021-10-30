@@ -99,7 +99,7 @@ GROUP BY
 
 2:
 SELECT 
-     c.manufacturer, COUNT(*) 
+     c.manufacturer, COUNT(\*) 
 FROM 
      sales as s 
 LEFT JOIN 
@@ -111,7 +111,7 @@ WHERE
 GROUP BY 
      c.manufacturer 
 ORDER BY 
-     COUNT(*) 
+     COUNT(\*) 
 DESC LIMIT 3;
 
 
