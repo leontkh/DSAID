@@ -1,6 +1,6 @@
 # DSAID
 ## Section: 1
-Please find the output in /output and the corresponding DAG file in /dag
+Please find the output in /output and the corresponding DAG file in /dags
 
 ## Section: 2
 The database will be constructed with the tables (and respective column names) as below:
@@ -32,47 +32,17 @@ customers
 ### Database Set-up
 Run 
 > docker-compose up
+
 To initiate the postgres docker container
+The DDL statements are included in the docker-compose
 
-#### DDL STATEMENTS
-The following 4 CREATE TABLE statements will initiate the database for the structure given aboce:
+To connect to the postgres container, open a new terminal and use
+> POSTGRES_CID=`docker container ls| grep postgres_db| awk '{ print $1 }'` && docker exec -it $POSTGRES_CID bash
 
-CREATE TABLE salesperson (
-salesperson_id serial PRIMARY KEY,
-name VARCHAR (50)
-);
+Then to connect into postgres use
+> psql -d postgres_db -U postgres_user
 
-CREATE TABLE cars (
-car_serial_no VARCHAR(50) PRIMARY KEY,
-manufacturer VARCHAR(20),
-model_name VARCHAR(15),
-weight INTEGER,
-price INTEGER
-);
-
-CREATE TABLE customers (
-customer_id serial PRIMARY KEY,
-customer_name VARCHAR (50),
-customer_phone VARCHAR (15)
-);
-
-CREATE TABLE sales (
-sale_id serial PRIMARY KEY,
-sale_date DATE,
-sale_time TIME,
-salesperson_id INTEGER,
-car_serial_no VARCHAR(50) UNIQUE,
-customer_id INTEGER,
-CONSTRAINT fk_salespeople
-FOREIGN KEY(salesperson_id)
-REFERENCES salespeople(salesperson_id),
-CONSTRAINT fk_cars
-FOREIGN KEY(car_serial_no)
-REFERENCES cars(car_serial_no),
-CONSTRAINT fk_customers
-FOREIGN KEY(customer_id)
-REFERENCES customers(customer_id)
-);
+Here you can run the following sql statements after inserting in the data.
 
 ### SQL STATEMENTS
 SQL statements for the query task given:

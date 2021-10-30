@@ -2,19 +2,10 @@
 
 version: '3.8'
 
+
 services:
   postgres_db:
-    image: postgres:latest
-    container_name: postgres_container
+    build: .
     ports:
       - 5432
-    environment:
-      - POSTGRES_USER=postgres_user
-      - POSTGRES_PASSWORD=postgres_pw
-      - POSTGRES_DB=postgres_db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-      - ./dbscripts/postgres:/docker-entrypoint-initdb.d
-
-volumes:
-  postgres_data:
+    container_name: postgres_db
