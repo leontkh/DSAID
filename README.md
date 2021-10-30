@@ -3,11 +3,11 @@
 This GitHub repository is my submission to the DSAID Data Engineering Technical Test given to me by GovTech. I'm given 48 Hours to complete this. If you're looking through this, I definitely will like your feedback in terms of issues raised or emails to tkokhow@gmail.com.
 
 ## Contents Section
-[Section 1: Data Pipelines](README.md#Section-1:-Data-Pipelines)
-[Section 2: Databases](README.md#Section-1:-Data-Pipelines)
-[Section 3: System Design](README.md#Section-1:-Data-Pipelines)
-[Section 4: Charts and APIs](README.md#Section-1:-Data-Pipelines)
-[Section 5: Machine Learning](README.md#Section-1:-Data-Pipelines)
+[Section 1: Data Pipelines](https://github.com/leontkh/DSAID#section-1-data-pipelines)
+[Section 2: Databases](https://github.com/leontkh/DSAID#section-2-databases)
+[Section 3: System Design](https://github.com/leontkh/DSAID#section-3-system-design)
+[Section 4: Charts and APIs](https://github.com/leontkh/DSAID#section-4-charts-and-apis)
+[Section 5: Machine Learning](https://github.com/leontkh/DSAID#section-5-machine-learning)
 
 ## Section 1: Data Pipelines
 ### Question Statement
@@ -24,7 +24,7 @@ Processing tasks:
 * Create a new field named above_100, which is true if the price is strictly greater than 100
 Note: please submit the processed dataset too.
 
-### Solution
+### Data Pipelines Solution
 Please find the processed datasets in /output and the corresponding airflow DAG file in /dags.
 
 *Text explaining logic behind DAG*
@@ -57,7 +57,8 @@ I want to know the list of our customers and their spending.
 
 I want to find out the top 3 car manufacturers that customers bought by sales (quantity) and the sales number for it in the current month.
 
-### Database Set-up
+### Databases Solution
+#### Database Set-up
 
 To begin setting up the database for the car dealership, run 
 > docker-compose up
@@ -73,7 +74,7 @@ Then to connect into postgres use
 
 Here you can run the following sql statements after inserting in the data.
 
-### Database Entity-Relations
+#### Database Entity-Relations
 
 The database will be constructed with the tables as per the ER diagram below, found under the folder of /database_diagram:
 
@@ -81,7 +82,7 @@ The database will be constructed with the tables as per the ER diagram below, fo
      alt="ER diagram for database"
      style="float: left; margin-right: 10px;" />
 
-### SQL Statements
+#### SQL Statements
 SQL statements for the query task given:
 
 1:
@@ -130,7 +131,7 @@ The company has a web application which collects images uploaded by customers. T
 
 Produce a system architecture diagram (e.g. Visio, Powerpoint) using any of the commercial cloud providers' ecosystem to explain your design. Please also indicate clearly if you have made any assumptions at any point.
 
-### Solution
+### System Design Solution
 
 Please find the image in the folder /system_design
 
@@ -149,7 +150,7 @@ Your team decided to use the public data from https://documenter.getpostman.com/
 
 Display a graph to show the number cases in Singapore over time using the APIs from https://covid19api.com/.
 
-### Solution
+### Charts and APIs Solution
 
 Please find the associated code and image in /sg_covid_cases
 
@@ -166,7 +167,7 @@ Using the dataset from https://archive.ics.uci.edu/ml/datasets/Car+Evaluation, c
 
 Maintenance = High Number of doors = 4 Lug Boot Size = Big Safety = High Class Value = Good
 
-### Solution
+### Machine Learning Solution
 
 Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in the folder /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
 
