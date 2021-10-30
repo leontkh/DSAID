@@ -48,7 +48,7 @@ Here you can run the following sql statements after inserting in the data.
 SQL statements for the query task given:
 
 1:
-SELECT 
+>SELECT 
      result.customer_name, result.customer_id, SUM(c2.price)
 FROM(
      SELECT 
@@ -68,7 +68,7 @@ GROUP BY
      result.customer_id, result.customer_name;
 
 2:
-SELECT 
+>SELECT 
      c.manufacturer, COUNT(\*) 
 FROM 
      sales as s 
