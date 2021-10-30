@@ -23,10 +23,6 @@ with DAG(
         import os
         import pandas as pd
         
-        from dotenv import load_dotenv
-        
-        load_dotenv()
-        
         input_path = os.environ.get("CSV_INPUT_PATH")
         output_path = os.environ.get("CSV_OUTPUT_PATH")
         
