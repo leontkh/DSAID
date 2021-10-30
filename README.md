@@ -43,3 +43,10 @@ Please find the associated code and image in /sg_covid_cases
 <img src="sg_covid_cases/sg_covid_cases.png"
      alt="System Design for Image Processing"
      style="float: left; margin-right: 10px;" />
+
+## Section: 5
+Please find the associated model pickle file and prediction in /classifier_model
+
+<img src="classifier_model/prediction.png"
+     alt="System Design for Image Processing"
+     style="float: left; margin-right: 10px;" />
