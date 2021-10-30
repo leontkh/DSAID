@@ -6,6 +6,7 @@ plt.style.use('seaborn-talk')
 
 country = "Singapore"
 case_types = ["confirmed", "recovered", "deaths"] 
+rename_dict = {"confirmed": "Confirmed cases", "recovered": "Cases recovered", "deaths": "COVID-19 deaths"}
 url = "https://api.covid19api.com/total/country/{}/status/{}"
 
 main_df = None
@@ -24,6 +25,9 @@ for case_type in case_types:
 main_df.replace(to_replace=0, value=np.nan, inplace=True)
 
 for case_type in case_types:
-    plt.plot(main_df["Date"], main_df[case_type], label = case_type)
+    plt.plot(main_df["Date"], main_df[case_type], label = rename_dict[case_type])
+plt.title("Graph of Cumulative number of COVID-19 cases in Singapore over Time")
 plt.legend()
+plt.xlabel("Time(Months)")
+plt.ylabel("Cumulative number of COVID-19 cases in Singapore")
 plt.savefig('sg_covid_cases.png')

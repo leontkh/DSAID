@@ -52,20 +52,21 @@ Sales transactions relate to a salesperson, a car and a customer and so is made 
 ### _Database set-up_
 
 To begin setting up the database for the car dealership, run 
-> docker-compose up
+>docker-compose up
 
 To initiate the Postgres docker container
 The DDL statements are included in `docker-compose.yml`
 
 To connect to the postgres_db container, open a new terminal and use
-> POSTGRES_CID=\`docker container ls| grep postgres_db| awk '{ print $1 }'\` && docker exec -it $POSTGRES_CID bash
+>POSTGRES_CID=\`docker container ls| grep postgres_db| awk '{ print $1 }'\` && docker exec -it $POSTGRES_CID bash
 
 Then to connect into Postgres from the postgres_db container, please use
-> psql -d postgres_db -U postgres_user
+>psql -d postgres_db -U postgres_user
 
 Here you can run the SQL statements in the next section after filling the tables with data.
 
 ### _SQL statements_
+
 SQL statements for the query task given:
 
 1:
@@ -114,29 +115,52 @@ Please find the below system architecture diagram in the folder [/system_design]
      alt="System Design for Image Processing"
      style="float: left; margin-right: 10px;" />
 
-Assumptions made:
-*
-*
-*
+### _Assumptions made_
 
-*Text explaining logic behind diagram*
+* Image collection web app and image stream web app has been incorporated into a full flow from image collection, image processing finally delivery of completed image
+* The full process flow is hosted by the Google Cloud Platform ecosystem. 
+* When customer access the image collection web app, authentication is required for billing and identification purposes
+* Image collected are stored in blob storage in Google Cloud Storage before image stream web app pass it downstream
+* Image collected are stored in blob storage is kept for archival purposes as well in order to compare with the archived processed image
+* Image processing code is hosted on Google Cloud Functions for minimum additional code
+* Processed image is sent to a Google Cloud Storage to serve the customers
+* Throughout the image processing, messages are sent to BigQuery for analytics
+* BigQuery are programmed with scheduled queries to collect key statistics
+* Scheduled query results are sent to Business Intelligence tools for visualization
 
 ## Section 4: Charts and APIs
-Please find the associated code and image in /sg_covid_cases
+### _Key files_
+
+The SG COVID-19 cases graph below can be found at [/sg_covid_cases](https://github.com/leontkh/DSAID/tree/master/sg_covid_cases). The associated Python file is also included in the same folder.
 
 <img src="sg_covid_cases/sg_covid_cases.png"
      alt="Graph of cases over time in Singapore"
      style="float: left; margin-right: 10px;" />
 
-*Text explaining logic behind diagram, especially where data is NA*
+### _API calls and graph plotting_
+
+The Python file accesses the API endpoint 3 times, each time calling for a different set of data. These are: 
+
+* the cumulative number of confirmed cases
+* the cumulative number of recovered cases
+* the cumulative number of COVID-19 deaths
+
+before plotting the graph out in the same axis.
+
+The cumulative number of `recovered` cases drop to `0` around August 2021. I suspect that the SG government may have changed their data format, resulting in the endpoint not collecting any data. As a result, I made the decision to change the `0` values to `NaN` values so the the graph cuts off when its no longer relevant.
 
 ## Section 5: Machine Learning
-Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in the folder /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
+### _Key files_
+
+The machine learning model can be found in the folder [/classifier_model](https://github.com/leontkh/DSAID/tree/master/classifier_model) in the form of a pickle file `trained_model.pkl`.
+
+The encoder required to processing the inputs to the model are also available in the form of a pickle file `encoder.pkl`.
+
+The folder also includes `cars_processing.ipynb`, outlining how the machine learning model is selected and trained.
+
+`prediction.png` in the same folder illustrates the Python code to use the model andthe capability of the model in predicting a buying price given the parameters:
+>Maintenance = High Number of doors = 4 Lug Boot Size = Big Safety = High Class Value = Good
 
 <img src="classifier_model/prediction.png"
      alt="Classifer prediction"
      style="float: left; margin-right: 10px;" />
-
-*Text explaining logic behind diagram*
-
-*How to use the pickle files*
