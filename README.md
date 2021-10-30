@@ -10,7 +10,7 @@ This GitHub repository is my submission to the DSAID Data Engineering Technical 
 [Section 5: Machine Learning](https://github.com/leontkh/DSAID#section-5-machine-learning)
 
 ## Section 1: Data Pipelines
-### Question Statement
+### _Question_
 
 The objective of this section is to design and implement a solution to process a data file on a regular interval (e.g. daily). Assume that there are 2 data files dataset1.csv and dataset2.csv, design a solution to process these files, along with the scheduling component. The expected output of the processing task is a CSV file including a header containing the field names.
 
@@ -24,13 +24,13 @@ Processing tasks:
 * Create a new field named above_100, which is true if the price is strictly greater than 100
 Note: please submit the processed dataset too.
 
-### Data Pipelines Solution
+### _Solution_
 Please find the processed datasets in /output and the corresponding airflow DAG file in /dags.
 
 *Text explaining logic behind DAG*
 
 ## Section 2: Databases
-### Question Statement
+### _Question_
 
 You are appointed by a car dealership to create their database infrastructure. There is only one store. In each business day, cars are being sold by a team of salespersons. Each transaction would contain information on the date and time of transaction, customer transacted with, and the car that was sold.
 
@@ -57,8 +57,8 @@ I want to know the list of our customers and their spending.
 
 I want to find out the top 3 car manufacturers that customers bought by sales (quantity) and the sales number for it in the current month.
 
-### Databases Solution
-#### Database Set-up
+### _Solution_
+### Database Set-up
 
 To begin setting up the database for the car dealership, run 
 > docker-compose up
@@ -74,7 +74,7 @@ Then to connect into postgres use
 
 Here you can run the following sql statements after inserting in the data.
 
-#### Database Entity-Relations
+### Database Entity-Relations
 
 The database will be constructed with the tables as per the ER diagram below, found under the folder of /database_diagram:
 
@@ -82,7 +82,7 @@ The database will be constructed with the tables as per the ER diagram below, fo
      alt="ER diagram for database"
      style="float: left; margin-right: 10px;" />
 
-#### SQL Statements
+### SQL Statements
 SQL statements for the query task given:
 
 1:
@@ -123,7 +123,7 @@ ORDER BY
 DESC LIMIT 3;
 
 ## Section 3: System Design
-### Question
+### _Question_
 
 You are designing data infrastructure on the cloud for a company whose main business is in processing images.
 
@@ -131,7 +131,7 @@ The company has a web application which collects images uploaded by customers. T
 
 Produce a system architecture diagram (e.g. Visio, Powerpoint) using any of the commercial cloud providers' ecosystem to explain your design. Please also indicate clearly if you have made any assumptions at any point.
 
-### System Design Solution
+### _Solution_
 
 Please find the image in the folder /system_design
 
@@ -142,7 +142,7 @@ Please find the image in the folder /system_design
 *Text explaining logic behind diagram*
 
 ## Section 4: Charts and APIs
-### Question
+### _Question_
 
 Your team decided to design a dashboard to display the statistic of COVID19 cases. You are tasked to display one of the components of the dashboard which is to display a visualisation representation of number of COVID19 cases in Singapore over time.
 
@@ -150,7 +150,7 @@ Your team decided to use the public data from https://documenter.getpostman.com/
 
 Display a graph to show the number cases in Singapore over time using the APIs from https://covid19api.com/.
 
-### Charts and APIs Solution
+### _Solution_
 
 Please find the associated code and image in /sg_covid_cases
 
@@ -161,13 +161,13 @@ Please find the associated code and image in /sg_covid_cases
 *Text explaining logic behind diagram, especially where data is NA*
 
 ## Section 5: Machine Learning
-### Question
+### _Question_
 
 Using the dataset from https://archive.ics.uci.edu/ml/datasets/Car+Evaluation, create a machine learning model to predict the buying price given the following parameters:
 
 Maintenance = High Number of doors = 4 Lug Boot Size = Big Safety = High Class Value = Good
 
-### Machine Learning Solution
+### _Solution_
 
 Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in the folder /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
 
