@@ -3,7 +3,11 @@
 This GitHub repository is my submission to the DSAID Data Engineering Technical Test given to me by GovTech. I'm given 48 Hours to complete this. If you're looking through this, I definitely will like your feedback in terms of issues raised or emails to tkokhow@gmail.com.
 
 ## Contents Section
-[An Internal Link to a Section Heading](README.md#modifying-front-matter)
+[Section 1: Data Pipelines](README.md#Section-1:-Data-Pipelines)
+[Section 2: Databases](README.md#Section-1:-Data-Pipelines)
+[Section 3: System Design](README.md#Section-1:-Data-Pipelines)
+[Section 4: Charts and APIs](README.md#Section-1:-Data-Pipelines)
+[Section 5: Machine Learning](README.md#Section-1:-Data-Pipelines)
 
 ## Section 1: Data Pipelines
 ### Question Statement
@@ -117,7 +121,7 @@ ORDER BY
      COUNT(\*) 
 DESC LIMIT 3;
 
-## Section: 3
+## Section 3: System Design
 ### Question
 
 You are designing data infrastructure on the cloud for a company whose main business is in processing images.
@@ -136,7 +140,7 @@ Please find the image in the folder /system_design
 
 *Text explaining logic behind diagram*
 
-## Section: 4
+## Section 4: Charts and APIs
 ### Question
 
 Your team decided to design a dashboard to display the statistic of COVID19 cases. You are tasked to display one of the components of the dashboard which is to display a visualisation representation of number of COVID19 cases in Singapore over time.
@@ -155,7 +159,7 @@ Please find the associated code and image in /sg_covid_cases
 
 *Text explaining logic behind diagram, especially where data is NA*
 
-## Section: 5
+## Section 5: Machine Learning
 ### Question
 
 Using the dataset from https://archive.ics.uci.edu/ml/datasets/Car+Evaluation, create a machine learning model to predict the buying price given the following parameters:
