@@ -15,20 +15,58 @@ Cars
 * model_name
 * weight
 * price
-* is_sold
 
 Sales
 * sale_id [Unique Key]
-* date
-* time
-* salesperson_id
-* car_serial_no [Unique]
-* customer_id
+* sale_date
+* sale_time
+* salesperson_id [Foreign Key]
+* car_serial_no [Unique Foreign Key]
+* customer_id [Foreign Key]
 
 Customers
 * customer_id [Unique Key]
 * customer_name
 * customer_phone
+
+SQL STATEMENTS
+1:
+SELECT 
+     result.customer_name, result.customer_id, SUM(c2.price)
+FROM(
+     SELECT 
+          c.customer_name, c.customer_id,  s.car_serial_no 
+     FROM 
+          Customers as c 
+     LEFT JOIN 
+          Sales as s 
+     ON 
+          c.customer_id = s.customer_id
+     ) as result 
+LEFT JOIN 
+     Cars as c2 
+ON 
+     result.car_serial_no = c2.car_serial_no
+GROUP BY 
+     result.customer_id, result.customer_name;
+
+2:
+SELECT 
+     c.manufacturer, COUNT(*) 
+FROM 
+     Sales as s 
+LEFT JOIN 
+     Cars as c 
+ON 
+     s.car_serial_no = c.car_serial_no 
+WHERE 
+     EXTRACT(MONTH FROM s.sale_date) = EXTRACT(MONTH FROM CURRENT_DATE) AND EXTRACT(YEAR FROM s.sale_date) = EXTRACT(YEAR FROM CURRENT_DATE) 
+GROUP BY 
+     c.manufacturer 
+ORDER BY 
+     COUNT(*) 
+DESC LIMIT 3;
+
 
 ## Section: 3
 Please find the image in /system_design
@@ -41,5 +79,12 @@ Please find the image in /system_design
 Please find the associated code and image in /sg_covid_cases
 
 <img src="sg_covid_cases/sg_covid_cases.png"
+     alt="System Design for Image Processing"
+     style="float: left; margin-right: 10px;" />
+
+## Section: 5
+Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
+
+<img src="classifier_model/prediction.png"
      alt="System Design for Image Processing"
      style="float: left; margin-right: 10px;" />
