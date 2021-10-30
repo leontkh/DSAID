@@ -1,6 +1,6 @@
 # DSAID
 
-This GitHub repository is my submission to the DSAID Data Engineering Technical Test given to me by GovTech. I'm given 48 Hours to complete this. If you're looking through this, I definitely will like your feedback in terms of issues raised or emails to tkokhow@gmail.com.
+This GitHub repository is my submission for the DSAID Data Engineering Technical Test from GovTech. If you have questions or doubts, you can direct them to my email at tkokhow@gmail.com.
 
 ## Contents Section
 * [Section 1: Data Pipelines](https://github.com/leontkh/DSAID#section-1-data-pipelines)
@@ -10,92 +10,60 @@ This GitHub repository is my submission to the DSAID Data Engineering Technical 
 * [Section 5: Machine Learning](https://github.com/leontkh/DSAID#section-5-machine-learning)
 
 ## Section 1: Data Pipelines
-### Question
+### _Key files_
 
-The objective of this section is to design and implement a solution to process a data file on a regular interval (e.g. daily). Assume that there are 2 data files dataset1.csv and dataset2.csv, design a solution to process these files, along with the scheduling component. The expected output of the processing task is a CSV file including a header containing the field names.
+Please find
+* The processed datasets in [/output](https://github.com/leontkh/DSAID/tree/master/output) 
+* The airflow DAG file that processed the datasets in [/dags](https://github.com/leontkh/DSAID/tree/master/dags).
 
-You can use common scheduling solutions such as cron or airflow to implement the scheduling component. You may assume that the data file will be available at 1am everyday. Please provide documentation (a markdown file will help) to explain your solution.
+### _Steps to get started_
 
-Processing tasks:
-
-* Split the name field into first_name, and last_name
-* Remove any zeros prepended to the price field
-* Delete any rows which do not have a name
-* Create a new field named above_100, which is true if the price is strictly greater than 100
-Note: please submit the processed dataset too.
-
-### Solution
-Please find the processed datasets in /output and the corresponding airflow DAG file in /dags.
-
-This solution leverages on Apache Airflow. To begin, set environment variables by opening a terminal. Set `CSV_INPUT_PATH` as the input location for .csv files to be process and `CSV_OUTPUT_PATH` as the output location for the processed .csv files to be saved.
+This solution leverages on Apache Airflow. To begin, set environment variables by opening a terminal. 
+1. Set `CSV_INPUT_PATH` as the input location for dropping .csv files to be processed
 e.g. `CSV_INPUT_PATH=/file/path/to/the/input/folder/`
+2. Set `CSV_OUTPUT_PATH` as the output location for the processed .csv files to be saved.
+3. After setting these two environment variables, set up and initiate Airflow.
 
-After setting these two environment variables, set up and initiate Airflow.
+After setting up Airflow, Airflow's scheduler should recognise the cron statement in the DAG's `schedule_interval` parameter, running the DAG every 1:01am. When activated, the DAG iterates through each .csv file at the CSV_INPUT_PATH location and processes each of them. 
 
-After setting up Airflow, Airflow's scheduler should recognise the cron statement in the DAG's `schedule_interval` parameter, running the DAG every 1:01am. When activated, the DAG iterates through each .csv file at the CSV_INPUT_PATH location and processes each of them. This is done by:
+### _What the DAG does_
 
-* Deleting any rows which do not have a name
-* Removing titles from the name field e.g. Mr., Dr.
+For each .csv file, the DAG runs the following processes on the .csv's data:
+
+* Deleting any rows which do not have a `name`
+* Removing titles from the `name` field e.g. Mr., Dr.
 * Separates the remaining name by spaces
-* Picks out the first two parts and puts them into first_name and last_name respectively
-* Discards the rest of the name to drop titles at the end of names
-* Remove any zeros prepended to the price field
-* Create a new field named above_100, which is true if the price is strictly greater than 100
+* Picks out the first two parts and puts them into `first_name` and `last_name` respectively
+* Discards the rest of the name to drop titles at the end of names e.g. MD
+* Remove any zeros prepended to the `price` field by changing data type to float
+* Create a new field named `above_100`, which is true if the `price` is strictly greater than 100
 
 ## Section 2: Databases
-### Question
-
-You are appointed by a car dealership to create their database infrastructure. There is only one store. In each business day, cars are being sold by a team of salespersons. Each transaction would contain information on the date and time of transaction, customer transacted with, and the car that was sold.
-
-The following are known:
-
-Each car can only be sold by one salesperson.
-There are multiple manufacturers’ cars sold.
-Each car has the following characteristics:
-* Manufacturer
-* Model name
-* Serial number
-* Weight
-* Price
-Each sale transaction contains the following information:
-* Customer Name
-* Customer Phone
-* Salesperson
-* Characteristics of car sold
-Set up a PostgreSQL database using the base docker image here given the above. We expect at least a Dockerfile which will stand up your database with the DDL statements to create the necessary tables. Produce entity-relationship diagrams as necessary to illustrate your design.
-
-Your team also needs you to query some information from the database that you have designed. You are tasked to write a sql statement for each of the following task:
-
-I want to know the list of our customers and their spending.
-
-I want to find out the top 3 car manufacturers that customers bought by sales (quantity) and the sales number for it in the current month.
-
-### Solution
-### _Database Set-up_
+### _Database set-up_
 
 To begin setting up the database for the car dealership, run 
 > docker-compose up
 
-To initiate the postgres docker container
-The DDL statements are included in the docker-compose
+To initiate the Postgres docker container
+The DDL statements are included in `docker-compose.yml`
 
-To connect to the postgres container, open a new terminal and use
+To connect to the postgres_db container, open a new terminal and use
 > POSTGRES_CID=\`docker container ls| grep postgres_db| awk '{ print $1 }'\` && docker exec -it $POSTGRES_CID bash
 
-Then to connect into postgres use
+Then to connect into Postgres use
 > psql -d postgres_db -U postgres_user
 
-Here you can run the following sql statements after inserting in the data.
+Here you can run the following SQL statements after inserting in the data.
 
-### _Database Entity-Relations_
+### _Database entity-relations_
 
-The database will be constructed with the tables as per the ER diagram below, found under the folder of /database_diagram:
+The database will be constructed with the tables as per the ER diagram below, found under the folder of [/database_diagram](https://github.com/leontkh/DSAID/tree/master/database_diagram):
 
 <img src="database_diagram/ER_diagram.png"
      alt="ER diagram for database"
      style="float: left; margin-right: 10px;" />
 
-### _SQL Statements_
+### _SQL statements_
 SQL statements for the query task given:
 
 1:
@@ -136,15 +104,7 @@ ORDER BY
 DESC LIMIT 3;
 
 ## Section 3: System Design
-### Question
-
-You are designing data infrastructure on the cloud for a company whose main business is in processing images.
-
-The company has a web application which collects images uploaded by customers. The company also has a separate web application which provides a stream of images using a Kafka stream. The company’s software engineers have already some code written to process the images. The company would like to save processed images for a minimum of 7 days for archival purposes. Ideally, the company would also want to be able to have some Business Intelligence (BI) on key statistics including number and type of images processed, and by which customers.
-
-Produce a system architecture diagram (e.g. Visio, Powerpoint) using any of the commercial cloud providers' ecosystem to explain your design. Please also indicate clearly if you have made any assumptions at any point.
-
-### Solution
+### _Key files_
 
 Please find the image in the folder /system_design
 
