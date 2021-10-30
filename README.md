@@ -1,6 +1,6 @@
 # DSAID
 
-This GitHub repository is my submission to the DSAID Data Engineering Technical Test given to me by GovTech. I'm given 48 Hours to complete this
+This GitHub repository is my submission to the DSAID Data Engineering Technical Test given to me by GovTech. I'm given 48 Hours to complete this. If you're looking through this, I definitely will like your feedback in terms of issues raised or emails to tkokhow@gmail.com.
 
 ## Contents Section
 [An Internal Link to a Section Heading](README.md#modifying-front-matter)
