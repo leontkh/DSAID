@@ -92,7 +92,7 @@ DESC LIMIT 3;
 ## Section: 3
 Please find the image in /system_design
 
-<img src="system_design/DSAID.png"
+<img src="system_design/system_design.png"
      alt="System Design for Image Processing"
      style="float: left; margin-right: 10px;" />
 
