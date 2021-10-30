@@ -3,7 +3,7 @@
 Please find the output in /output and the corresponding DAG file in /dags
 
 ## Section: 2
-The database will be constructed with the tables (and respective column names) as below:
+The database will be constructed with the tables (and respective column names) as below, an ER diagram can be found at /database_diagram:
 
 salespeople
 * salesperson_id [Unique Key]
@@ -28,6 +28,10 @@ customers
 * customer_id [Unique Key]
 * customer_name
 * customer_phone
+
+<img src="database_diagram/ER_diagram.png"
+     alt="ER diagram for database"
+     style="float: left; margin-right: 10px;" />
 
 ### Database Set-up
 Run 
@@ -96,12 +100,12 @@ Please find the image in /system_design
 Please find the associated code and image in /sg_covid_cases
 
 <img src="sg_covid_cases/sg_covid_cases.png"
-     alt="System Design for Image Processing"
+     alt="Graph of cases over time in Singapore"
      style="float: left; margin-right: 10px;" />
 
 ## Section: 5
 Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
 
 <img src="classifier_model/prediction.png"
-     alt="System Design for Image Processing"
+     alt="Classifer prediction"
      style="float: left; margin-right: 10px;" />
