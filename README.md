@@ -8,6 +8,7 @@ This GitHub repository is my submission for the DSAID Data Engineering Technical
 * [Section 3: System Design](https://github.com/leontkh/DSAID#section-3-system-design)
 * [Section 4: Charts and APIs](https://github.com/leontkh/DSAID#section-4-charts-and-apis)
 * [Section 5: Machine Learning](https://github.com/leontkh/DSAID#section-5-machine-learning)
+* [Afterword](https://github.com/leontkh/DSAID#afterword)
 
 ## Section 1: Data Pipelines
 ### _Key files_
@@ -164,3 +165,9 @@ The folder also includes `cars_processing.ipynb`, outlining how the machine lear
 <img src="classifier_model/prediction.png"
      alt="Classifer prediction"
      style="float: left; margin-right: 10px;" />
+
+## Afterword
+
+I would like to have written a way to automate the Airflow set-up process for Section 1. However, my current computer does not possess sufficient memory to run Airflow and I am unable to check the effectiveness of my DAG file.
+
+Overall, this Technical Test has been a fun challenge. Typically I would receive algorithm challenges or SQL tests as technical tests, but this is the first time I've seen a test so comprehensive. Along the way I've learnt to utilise the syntax for markdown more, and would definitely use this to make my README.md more readable in future projects.
