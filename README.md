@@ -24,7 +24,7 @@ e.g. `CSV_INPUT_PATH=/file/path/to/the/input/folder/`
 2. Set `CSV_OUTPUT_PATH` as the output location for the processed .csv files to be saved.
 3. After setting these two environment variables, set up and initiate Airflow.
 
-After setting up Airflow, Airflow's scheduler should recognise the cron statement in the DAG's `schedule_interval` parameter, running the DAG every 1:01am. When activated, the DAG iterates through each .csv file at the CSV_INPUT_PATH location and processes each of them. 
+After setting up Airflow, Airflow's scheduler should recognise the cron statement in the DAG's `schedule_interval` parameter, running the DAG every 1:01am. When activated, the DAG iterates through each .csv file at the `CSV_INPUT_PATH` location and processes each of them. 
 
 ### _What the DAG does_
 
@@ -39,6 +39,16 @@ For each .csv file, the DAG runs the following processes on the .csv's data:
 * Create a new field named `above_100`, which is true if the `price` is strictly greater than 100
 
 ## Section 2: Databases
+### _Database entity-relations_
+
+The database I will propose for car dealership will be constructed with the tables as per the ER diagram below, found under the folder of [/database_diagram](https://github.com/leontkh/DSAID/tree/master/database_diagram):
+
+<img src="database_diagram/ER_diagram.png"
+     alt="ER diagram for database"
+     style="float: left; margin-right: 10px;" />
+
+Sales transactions relate to a salesperson, a car and a customer and so is made into the central table that connects each of these information together. 
+
 ### _Database set-up_
 
 To begin setting up the database for the car dealership, run 
@@ -50,18 +60,10 @@ The DDL statements are included in `docker-compose.yml`
 To connect to the postgres_db container, open a new terminal and use
 > POSTGRES_CID=\`docker container ls| grep postgres_db| awk '{ print $1 }'\` && docker exec -it $POSTGRES_CID bash
 
-Then to connect into Postgres use
+Then to connect into Postgres from the postgres_db container, please use
 > psql -d postgres_db -U postgres_user
 
-Here you can run the following SQL statements after inserting in the data.
-
-### _Database entity-relations_
-
-The database will be constructed with the tables as per the ER diagram below, found under the folder of [/database_diagram](https://github.com/leontkh/DSAID/tree/master/database_diagram):
-
-<img src="database_diagram/ER_diagram.png"
-     alt="ER diagram for database"
-     style="float: left; margin-right: 10px;" />
+Here you can run the SQL statements in the next section after filling the tables with data.
 
 ### _SQL statements_
 SQL statements for the query task given:
@@ -106,25 +108,20 @@ DESC LIMIT 3;
 ## Section 3: System Design
 ### _Key files_
 
-Please find the image in the folder /system_design
+Please find the below system architecture diagram in the folder [/system_design](https://github.com/leontkh/DSAID/tree/master/system_design):
 
 <img src="system_design/system_design.png"
      alt="System Design for Image Processing"
      style="float: left; margin-right: 10px;" />
 
+Assumptions made:
+*
+*
+*
+
 *Text explaining logic behind diagram*
 
 ## Section 4: Charts and APIs
-### Question
-
-Your team decided to design a dashboard to display the statistic of COVID19 cases. You are tasked to display one of the components of the dashboard which is to display a visualisation representation of number of COVID19 cases in Singapore over time.
-
-Your team decided to use the public data from https://documenter.getpostman.com/view/10808728/SzS8rjbc#b07f97ba-24f4-4ebe-ad71-97fa35f3b683.
-
-Display a graph to show the number cases in Singapore over time using the APIs from https://covid19api.com/.
-
-### Solution
-
 Please find the associated code and image in /sg_covid_cases
 
 <img src="sg_covid_cases/sg_covid_cases.png"
@@ -134,14 +131,6 @@ Please find the associated code and image in /sg_covid_cases
 *Text explaining logic behind diagram, especially where data is NA*
 
 ## Section 5: Machine Learning
-### Question
-
-Using the dataset from https://archive.ics.uci.edu/ml/datasets/Car+Evaluation, create a machine learning model to predict the buying price given the following parameters:
-
-Maintenance = High Number of doors = 4 Lug Boot Size = Big Safety = High Class Value = Good
-
-### Solution
-
 Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in the folder /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
 
 <img src="classifier_model/prediction.png"
