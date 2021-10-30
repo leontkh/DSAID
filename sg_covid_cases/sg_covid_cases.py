@@ -1,6 +1,7 @@
-import requests
-import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import requests
 plt.style.use('seaborn-talk')
 
 country = "Singapore"
@@ -20,6 +21,8 @@ for case_type in case_types:
     else:
         main_df = main_df.merge(df, how='outer', on="Date")
         
+main_df.replace(to_replace=0, value=np.nan, inplace=True)
+
 for case_type in case_types:
     plt.plot(main_df["Date"], main_df[case_type], label = case_type)
 plt.legend()
