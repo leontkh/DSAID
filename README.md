@@ -158,7 +158,7 @@ The encoder required to processing the inputs to the model are also available in
 
 The folder also includes `cars_processing.ipynb`, outlining how the machine learning model is selected and trained.
 
-`prediction.png` in the same folder illustrates the Python code to use the model andthe capability of the model in predicting a buying price given the parameters:
+`prediction.png` in the same folder illustrates the Python code to use the model and the capability of the model in predicting a buying price given the parameters:
 >Maintenance = High Number of doors = 4 Lug Boot Size = Big Safety = High Class Value = Good
 
 <img src="classifier_model/prediction.png"
