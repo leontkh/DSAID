@@ -115,11 +115,16 @@ Please find the below system architecture diagram in the folder [/system_design]
      style="float: left; margin-right: 10px;" />
 
 Assumptions made:
-*
-*
-*
-
-*Text explaining logic behind diagram*
+* Image collection web app and image stream web app has been incorporated into a full flow from image collection, image processing finally delivery of completed image
+* The full process flow is hosted by the Google Cloud Platform ecosystem. 
+* When customer access the image collection web app, authentication is required for billing and identification purposes
+* Image collected are stored in blob storage in Google Cloud Storage before image stream web app pass it downstream
+* Image collected are stored in blob storage is kept for archival purposes as well in order to compare with the archived processed image
+* Image processing code is hosted on Google Cloud Functions for minimum additional code
+* Processed image is sent to a Google Cloud Storage to serve the customers
+* Throughout the image processing, messages are sent to BigQuery for analytics
+* BigQuery are programmed with scheduled queries to collect key statistics
+* Scheduled query results are sent to Business Intelligence tools for visualization
 
 ## Section 4: Charts and APIs
 Please find the associated code and image in /sg_covid_cases
