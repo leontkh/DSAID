@@ -3,14 +3,14 @@
 This GitHub repository is my submission to the DSAID Data Engineering Technical Test given to me by GovTech. I'm given 48 Hours to complete this. If you're looking through this, I definitely will like your feedback in terms of issues raised or emails to tkokhow@gmail.com.
 
 ## Contents Section
-[Section 1: Data Pipelines](https://github.com/leontkh/DSAID#section-1-data-pipelines)
-[Section 2: Databases](https://github.com/leontkh/DSAID#section-2-databases)
-[Section 3: System Design](https://github.com/leontkh/DSAID#section-3-system-design)
-[Section 4: Charts and APIs](https://github.com/leontkh/DSAID#section-4-charts-and-apis)
-[Section 5: Machine Learning](https://github.com/leontkh/DSAID#section-5-machine-learning)
+* [Section 1: Data Pipelines](https://github.com/leontkh/DSAID#section-1-data-pipelines)
+* [Section 2: Databases](https://github.com/leontkh/DSAID#section-2-databases)
+* [Section 3: System Design](https://github.com/leontkh/DSAID#section-3-system-design)
+* [Section 4: Charts and APIs](https://github.com/leontkh/DSAID#section-4-charts-and-apis)
+* [Section 5: Machine Learning](https://github.com/leontkh/DSAID#section-5-machine-learning)
 
 ## Section 1: Data Pipelines
-### _Question_
+### Question
 
 The objective of this section is to design and implement a solution to process a data file on a regular interval (e.g. daily). Assume that there are 2 data files dataset1.csv and dataset2.csv, design a solution to process these files, along with the scheduling component. The expected output of the processing task is a CSV file including a header containing the field names.
 
@@ -24,13 +24,26 @@ Processing tasks:
 * Create a new field named above_100, which is true if the price is strictly greater than 100
 Note: please submit the processed dataset too.
 
-### _Solution_
+### Solution
 Please find the processed datasets in /output and the corresponding airflow DAG file in /dags.
 
-*Text explaining logic behind DAG*
+This solution leverages on Apache Airflow. To begin, set environment variables by opening a terminal. Set `CSV_INPUT_PATH` as the input location for .csv files to be process and `CSV_OUTPUT_PATH` as the output location for the processed .csv files to be saved.
+e.g. `CSV_INPUT_PATH=/file/path/to/the/input/folder/`
+
+After setting these two environment variables, set up and initiate Airflow.
+
+After setting up Airflow, Airflow's scheduler should recognise the cron statement in the DAG's `schedule_interval` parameter, running the DAG every 1:01am. When activated, the DAG iterates through each .csv file at the CSV_INPUT_PATH location and processes each of them. This is done by:
+
+* Deleting any rows which do not have a name
+* Removing titles from the name field e.g. Mr., Dr.
+* Separates the remaining name by spaces
+* Picks out the first two parts and puts them into first_name and last_name respectively
+* Discards the rest of the name to drop titles at the end of names
+* Remove any zeros prepended to the price field
+* Create a new field named above_100, which is true if the price is strictly greater than 100
 
 ## Section 2: Databases
-### _Question_
+### Question
 
 You are appointed by a car dealership to create their database infrastructure. There is only one store. In each business day, cars are being sold by a team of salespersons. Each transaction would contain information on the date and time of transaction, customer transacted with, and the car that was sold.
 
@@ -57,8 +70,8 @@ I want to know the list of our customers and their spending.
 
 I want to find out the top 3 car manufacturers that customers bought by sales (quantity) and the sales number for it in the current month.
 
-### _Solution_
-### Database Set-up
+### Solution
+### _Database Set-up_
 
 To begin setting up the database for the car dealership, run 
 > docker-compose up
@@ -74,7 +87,7 @@ Then to connect into postgres use
 
 Here you can run the following sql statements after inserting in the data.
 
-### Database Entity-Relations
+### _Database Entity-Relations_
 
 The database will be constructed with the tables as per the ER diagram below, found under the folder of /database_diagram:
 
@@ -82,7 +95,7 @@ The database will be constructed with the tables as per the ER diagram below, fo
      alt="ER diagram for database"
      style="float: left; margin-right: 10px;" />
 
-### SQL Statements
+### _SQL Statements_
 SQL statements for the query task given:
 
 1:
@@ -123,7 +136,7 @@ ORDER BY
 DESC LIMIT 3;
 
 ## Section 3: System Design
-### _Question_
+### Question
 
 You are designing data infrastructure on the cloud for a company whose main business is in processing images.
 
@@ -131,7 +144,7 @@ The company has a web application which collects images uploaded by customers. T
 
 Produce a system architecture diagram (e.g. Visio, Powerpoint) using any of the commercial cloud providers' ecosystem to explain your design. Please also indicate clearly if you have made any assumptions at any point.
 
-### _Solution_
+### Solution
 
 Please find the image in the folder /system_design
 
@@ -142,7 +155,7 @@ Please find the image in the folder /system_design
 *Text explaining logic behind diagram*
 
 ## Section 4: Charts and APIs
-### _Question_
+### Question
 
 Your team decided to design a dashboard to display the statistic of COVID19 cases. You are tasked to display one of the components of the dashboard which is to display a visualisation representation of number of COVID19 cases in Singapore over time.
 
@@ -150,7 +163,7 @@ Your team decided to use the public data from https://documenter.getpostman.com/
 
 Display a graph to show the number cases in Singapore over time using the APIs from https://covid19api.com/.
 
-### _Solution_
+### Solution
 
 Please find the associated code and image in /sg_covid_cases
 
@@ -161,13 +174,13 @@ Please find the associated code and image in /sg_covid_cases
 *Text explaining logic behind diagram, especially where data is NA*
 
 ## Section 5: Machine Learning
-### _Question_
+### Question
 
 Using the dataset from https://archive.ics.uci.edu/ml/datasets/Car+Evaluation, create a machine learning model to predict the buying price given the following parameters:
 
 Maintenance = High Number of doors = 4 Lug Boot Size = Big Safety = High Class Value = Good
 
-### _Solution_
+### Solution
 
 Please find the the model pickle file (trained_model.pkl) and prediction image (prediction.png) in the folder /classifier_model. The encoder pickle file (encoder.pkl) will be necessary in processing the inputs to the model. The .ipynb file shows the steps used to train the model.
 
