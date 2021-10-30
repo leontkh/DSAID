@@ -24,7 +24,7 @@ e.g. `CSV_INPUT_PATH=/file/path/to/the/input/folder/`
 2. Set `CSV_OUTPUT_PATH` as the output location for the processed .csv files to be saved.
 3. After setting these two environment variables, set up and initiate Airflow.
 
-After setting up Airflow, Airflow's scheduler should recognise the cron statement in the DAG's `schedule_interval` parameter, running the DAG every 1:01am. When activated, the DAG iterates through each .csv file at the `CSV_INPUT_PATH` location and processes each of them. 
+After setting up [Airflow](https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html) at the root of this directory, Airflow's scheduler should recognise the cron statement in the DAG's `schedule_interval` parameter, running the DAG every 1:01am. When activated, the DAG iterates through each .csv file at the `CSV_INPUT_PATH` location and processes each of them. 
 
 ### _What the DAG does_
 
