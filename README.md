@@ -15,7 +15,7 @@ This GitHub repository is my submission for the DSAID Data Engineering Technical
 
 Please find
 * The processed datasets in [/output](https://github.com/leontkh/DSAID/tree/master/output) 
-* The airflow DAG file that processed the datasets in [/dags](https://github.com/leontkh/DSAID/tree/master/dags).
+* The Airflow DAG file that processed the datasets in [/dags](https://github.com/leontkh/DSAID/tree/master/dags).
 
 ### _Steps to get started_
 
@@ -118,7 +118,7 @@ Please find the below system architecture diagram in the folder [/system_design]
 
 ### _Assumptions made_
 
-* Image collection web app and image stream web app has been incorporated into a full flow from image collection, image processing finally delivery of completed image
+* Image collection web app and image stream web app has been incorporated into a full flow from image collection, to image processing and then finally the delivery of completed image
 * The full process flow is hosted by the Google Cloud Platform ecosystem. 
 
 ### _System architecture diagram flow_
