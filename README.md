@@ -173,4 +173,4 @@ The folder [/classifier_model](https://github.com/leontkh/DSAID/tree/master/clas
 
 Automating the Airflow set-up process for Section 1 would have been a great addition. However, my current computer does not possess sufficient memory to run Airflow in Docker.
 
-Overall, this Technical Test has been a fun challenge. Typically I would receive algorithm challenges or SQL tests as technical tests, but this is the first time I've seen a test so comprehensive. Along the way I've learnt to utilise the syntax for markdown more, and would definitely use this to make my README.md more readable in future projects.
+Overall, this Technical Test has been a fun challenge. Typically I would receive algorithm challenges or SQL tests as technical tests, but this is the first time I've seen a test so comprehensive. Along the way I've learnt to utilise the syntax for markdown more, and would definitely use this to make my README.md and Python notebooks more readable in future projects.
